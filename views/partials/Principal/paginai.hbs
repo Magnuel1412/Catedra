@@ -1,0 +1,263 @@
+<script src="/js/utilidades.js"></script>
+<script>
+    $(document).ready(function () {
+
+
+
+        $.validator.addMethod("soloLetras", function (value, element) {
+            return this.optional(element) || /^[a-z\s]+$/i.test(value);
+        }, "Solo letras");
+        $.validator.addMethod("cedula", function (value, element) {
+            return this.optional(element) || validarCedula(value);
+        }, "Cedula no valida");
+        $("#formulario").validate({
+            errorClass: "my-error-class",
+            validClass: "my-valid-class",
+            rules: {
+
+                nombre: {
+                    required: true,
+                    minlength: 4,
+                    maxlength: 45
+                },
+                apellido: {
+                    required: true,
+                    minlength: 4,
+                    maxlength: 45
+                },
+                cedula: {
+                    required: true,
+                    minlength: 10,
+                    maxlength: 10
+                },
+
+            },
+            messages: {
+                nombre: {
+                    required: "Ingrese los nombres",
+                    minlength: "Minimo 4 caracteres",
+                    maxlength: "Máximo 45 caracteres"
+                },
+                apellido: {
+                    required: "Ingrese los apellidos",
+                    minlength: "Minimo 4 caracteres",
+                    maxlength: "Máximo 45 caracteres"
+                },
+                cedula: {
+                    required: "Ingrese la cedula",
+                    minlength: "Minimo 10 caracteres",
+                    maxlength: "Máximo 10 caracteres"
+                }
+
+            }
+        });
+    });
+
+//    function generarcodigo() {
+//        var num = Math.random() * 1;
+//        var aux = num + 1;
+//
+//        return aux;
+
+
+</script>
+<script>
+    $(document).ready(funcMain);
+
+
+    function funcMain()
+    {
+        $("#add_row").click(newRowTable);
+
+
+    }
+
+    function newRowTable()
+    {
+        var nombre = document.getElementById("nombre").value;
+        var apellido = document.getElementById("apellido").value;
+        var cedula = document.getElementById("cedula").value;
+        var nucali = document.getElementById("num").value;
+
+
+
+        var cal1 = document.getElementById("ca1").value;
+        var cal2 = document.getElementById("ca2").value;
+        var cal3 = document.getElementById("ca3").value;
+        var cal4 = document.getElementById("ca4").value;
+        var cal5 = document.getElementById("ca5").value;
+        var cal6 = document.getElementById("ca6").value;
+        var promedio = parseFloat(cal1) + parseFloat(cal2)+ parseFloat(cal3)+ parseFloat(cal4)+ parseFloat(cal5)+ parseFloat(cal6);
+
+        var total = parseFloat(promedio) / parseFloat(nucali);
+
+
+        var name_table = document.getElementById("tabla_estu");
+
+        var row = name_table.insertRow(0 + 1);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        var cell5 = row.insertCell(4);
+        var cell6 = row.insertCell(5);
+
+        cell1.innerHTML = nombre;
+        cell2.innerHTML = apellido;
+        cell3.innerHTML = cedula;
+        cell4.innerHTML = nucali;
+        cell5.innerHTML = promedio;
+        cell6.innerHTML = total;
+
+    }
+
+
+
+
+
+
+</script>
+<section class="colorlib-about" data-section="re">
+
+
+    <div class="container" style="padding-top: 5%;">  
+
+
+        <form id="formulario" method="POST" action="#">
+            <center>
+                <div> 
+                    <h1>
+                        <small class="label label-info">Datos del estudiante </small>   
+                    </h1>
+                </div>
+
+                <div class="form-group">
+                    <label for="nombres">Nombre del estudiante</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" aria-describedby="nombreHelp" placeholder="Ingrese el nombre del cliente.">
+                    <small id="nombreHelp" class="form-text text-muted">Ingrese el nombre del cliente.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="apellido">Apellidos del estudiante </label>
+                    <input type="text" class="form-control" id="apellido" name="apellido" aria-describedby="apellidoHelp" placeholder="Ingrese el apellido ">
+                    <small id="apellidosHelp" class="form-text text-muted">Ingrese el apellido </small>
+                </div>
+                <div class="form-group">
+                    <label for="cedula">Cedula del estudiante </label>
+                    <input type="text" class="form-control" id="cedula" name="cedula" aria-describedby="cedulaHelp" placeholder="Ingrese la cedula">
+                    <small id="cedulaHelp" class="form-text text-muted">Ingrese la cedula </small>
+                </div>
+                <div> 
+                    <h1>
+                        <small class="label label-warning">El estudiante se le podra  registrar como maximo en 6 materias </small>   
+                    </h1>
+                </div>
+                <div class="form-group">
+                    <label for="cedula">Numero de materia que escoge el estudiante </label>
+                    <input type="text" class="form-control" id="num" name="num" aria-describedby="cedulaHelp" placeholder="">
+                    <small id="cedulaHelp" class="form-text text-muted">Cantidad de materias </small>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="cedula">Materia 1 </label>
+                    <input type="text" class="form-control" id="mat1" name="mat1" aria-describedby="cedulaHelp" placeholder="">
+                    <small id="cedulaHelp" class="form-text text-muted">Nombre</small>
+
+                    <input type="text" class="form-control" id="ca1" value="0" name="ca1" aria-describedby="cedulaHelp" placeholder="">
+
+                    <small id="cedulaHelp" class="form-text text-muted">Calificación</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="cedula">Materia 2 </label>
+                    <input type="text" class="form-control" id="mat2" name="mat2" aria-describedby="cedulaHelp" placeholder="">
+                    <small id="cedulaHelp" class="form-text text-muted">Nombre</small>
+
+                    <input type="text" class="form-control" id="ca2" value="0" name="ca2" aria-describedby="cedulaHelp" placeholder="">
+
+                    <small id="cedulaHelp" class="form-text text-muted">Calificación</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="cedula">Materia 3 </label>
+                    <input type="text" class="form-control" id="mat3" name="mat3" aria-describedby="cedulaHelp" placeholder="">
+                    <small id="cedulaHelp" class="form-text text-muted">Nombre</small>
+
+                    <input type="text" class="form-control" id="ca3" value="0" name="ca3" aria-describedby="cedulaHelp" placeholder="">
+
+                    <small id="cedulaHelp" class="form-text text-muted">Calificación</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="cedula">Materia 4 </label>
+                    <input type="text" class="form-control" id="mat4" name="mat4" aria-describedby="cedulaHelp" placeholder="">
+                    <small id="cedulaHelp" class="form-text text-muted">Nombre</small>
+
+                    <input type="text" class="form-control" id="ca4" value="0"  name="ca4" aria-describedby="cedulaHelp" placeholder="">
+
+                    <small id="cedulaHelp" class="form-text text-muted">Calificación</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="cedula">Materia 5 </label>
+                    <input type="text" class="form-control" id="mat5" name="mat5" aria-describedby="cedulaHelp" placeholder="">
+                    <small id="cedulaHelp" class="form-text text-muted">Nombre</small>
+
+                    <input type="text" class="form-control" id="ca5" value="0"  name="ca5" aria-describedby="cedulaHelp" placeholder="">
+
+                    <small id="cedulaHelp" class="form-text text-muted">Calificación</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="cedula">Materia 6 </label>
+                    <input type="text" class="form-control" id="mat6" name="mat6" aria-describedby="cedulaHelp" placeholder="">
+                    <small id="cedulaHelp" class="form-text text-muted">Nombre</small>
+
+                    <input type="text" class="form-control" id="ca6" value="0"  name="ca6" aria-describedby="cedulaHelp" placeholder="">
+
+                    <small id="cedulaHelp" class="form-text text-muted">Calificación</small>
+                </div>
+                <div class="12u">
+                    <ul class="actions" >
+                        <li><input type="button" value="Resgistar" class="btn btn-info" id="add_row"/></li>
+                    </ul>
+                <a href="/" class="btn btn-danger">Cancelar</a>
+                </div>
+            </center> 
+        </form>
+    </div>
+</section>
+<section class="colorlib-about" data-section="services">
+
+    <div class="table-wrapper" >
+        <table id="tabla_estu" class="table table-striped">
+            <thead id="cabezera" align="center">
+                <tr align="left"> 
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Cedula</th>
+                    <th>N° materias</th>
+                    <th>Suma de las calificaciones</th>
+                    <th>Promedio total</th>
+
+
+
+                </tr>
+            </thead>
+            <tbody id="content_table">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+</section>
+
