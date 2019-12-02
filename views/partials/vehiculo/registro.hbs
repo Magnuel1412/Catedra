@@ -1,0 +1,184 @@
+<!--<script>
+    $(document).ready(function () {
+        function calcular() {
+            var texto = $("#texto").val();
+            if (texto === 'Toyota') {
+                $("#precio").val("15000");
+            }
+        }
+    });
+</script>
+<div class="container">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="title">{{title}}</h2>
+                <form id="formulario" method="POST" action="/">
+                    <div class="modal-footer">
+                        <small class="label label-danger">DATOS VEHICULO</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre_veh">Vehiculo</label>
+                        <input type="text" class="form-control" id="nombre_veh" name="nombre_veh" aria-describedby="nombre_vehHelp" placeholder="Ingrese modelo">
+                        <small id="nombre_vehHelp" class="form-text text-muted">Ingrese modelo del vehiculo</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="color">Color</label>
+                        <input type="text" class="form-control" id="color" name="color" aria-describedby="colorHelp" placeholder="Ingrese color">
+                        <small id="colorHelp" class="form-text text-muted">Ingrese color</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="marca">Marca</label><br>
+                        <select name="marca" id="marca" onchange="calcular()">
+                            <option value="Toyota">Toyota</option>
+                            <option value="Nissan">Nissan</option>
+                            <option value="Ford">Ford</option>
+                            <option value="Renault">Renault</option>
+                        </select>
+                    </div><br>
+                    <br>
+                    <div class="form-group">
+                        <label for="precio">Precio</label>
+                        <input type="text" class="form-control" id="precio" name="precio" aria-describedby="tipoHelp" placeholder="Ingrese precio">
+                        <small id="precioHelp" class="form-text text-muted">Ingrese precio</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="placa">Placa</label>
+                        <input type="text" class="form-control" id="placa" name="placa" aria-describedby="placaHelp" placeholder="Ingrese placa">
+                        <small id="placaHelp" class="form-text text-muted">Ingrese tipo</small>
+                    </div>
+                    <div class="modal-footer">
+                        <small class="label label-danger">DATOS PROPIETARIO</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="cedula">Cedula</label>
+                        <input type="text" class="form-control" id="cedula" name="cedula" aria-describedby="cedulaHelp" placeholder="Ingrese cedula">
+                        <small id="cedulaHelp" class="form-text text-muted">Ingrese cedula</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="apellidos">Apellidos</label>
+                        <input type="text" class="form-control" id="apellidos" name="apellidos" aria-describedby="apellidosHelp" placeholder="Ingrese sus apellidos">
+                        <small id="apellidosHelp" class="form-text text-muted">Apellidos Completos.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="nombres">Nombres</label>
+                        <input type="text" class="form-control" id="nombres" name="nombres" aria-describedby="nombresHelp" placeholder="Ingrese sus nombres">
+                        <small id="nombresHelp" class="form-text text-muted">Nombres Completos.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha_nac">Fecha Nacimiento</label>
+                        <input type="date" class="form-control" id="fecha_nac" name="fecha_nac" aria-describedby="fecha_nacHelp" placeholder="Ingrese sus fecha de nacimiento">
+                        <small id="fecha_nac_Help" class="form-text text-muted">Ingrese su Fecha nacimiento.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="edad">Edad</label>
+                        <input type="text" class="form-control" id="edad" name="edad" aria-describedby="edadHelp" placeholder="Ingrese su edad">
+                        <small id="edadHelp" class="form-text text-muted">Ingrese su Edad.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="direccion">Direccion</label>
+                        <textarea class="form-control" id="direccion" name="direccion" aria-describedby="direccionHelp" placeholder="Ingrese direccion"></textarea>
+                        <small id="direccionHelp" class="form-text text-muted">Ingrese direccion</small>
+                    </div>
+                        <input type="submit" class="btn btn-success" value="Guardar"/>
+                        <a href="/usuario" class="btn btn-danger">Volver</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>-->
+<div class="panel panel-primary">
+
+    <div class="modal-body">
+        <form id="formulario" method="POST" action="">
+            <div>
+                <ul class="nav nav-tabs" role="tablist">                                     
+                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Vehiculo</a></li>                                       
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div class="form-group">
+                        <div class="modal-footer">
+                            <small class="label label-danger">Vendedor</small>
+                        </div>
+                        <!--                                            <%= medico.usuario %>-->
+                        <span for="vendedor" class="control-labe"> Manuel</span>
+                        <!--                                            <%= medico.usuario %>-->
+                        <input type="hidden" id="medico" name="vendedor" value="">
+                    </div>
+                    <div class="modal-footer">
+                        <small class="label label-danger">DATOS PACIENTE:</small>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane active" id="home">
+                        <!--<% listado.forEach(function(item, index){ %>-->
+                        <label for="paciente" class="control-label">Seleccione un cliente:</label>
+                        <select class="form-control" id="historia" name="historia">
+                            <option value="">  
+                                <!--<option value="<%= item.historia.id %>">-->
+                                <!--<%= item.apellidos %> <%= item.nombres %>-->
+                            </option>
+                        </select>
+                        <div class="form-group">
+                            <label for="cedula" class="control-label">Cédula:</label>
+                            <input type="text" class="form-control" id="cedula" name="cedula" value="" readonly>
+                            <!--<input type="text" class="form-control" id="cedula" name="cedula" value="<%= item.cedula %>" readonly>-->
+
+                        </div>
+                        <div class="form-group">
+                            <label for="nombreC" class="control-label">Nombres:</label>
+                            <input type="text" class="form-control" id="nombreC" name="nombreC" value="" readonly>
+                            <!--                                                <input type="text" class="form-control" id="nombreC" name="nombreC" value="<%= item.apellidos %> <%= item.nombres %>" readonly>-->
+
+                        </div>
+
+
+                        <div class="modal-footer">
+                            <small class="label label-danger">DATOS del vehiculo:</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="nro" class="control-label">Nro de matricula</label>
+                            <input type="text" class="form-control" id="nro" name="nro" value="" >
+                            <!--<input type="text" class="form-control" id="nro" name="nro" value="<%= item.historia.nro_historia %>" readonly>-->
+
+                        </div>
+                        <div class="form-group">
+                            <label for="marca" class="control-label">Marca</label>
+                            <!--<input type="text" class="form-control" id="habitos" name="habitos" value="<%= item.historia.habitos %>"readonly>-->
+                            <select name="marca" id="genero_musical" class="form-control" aria-describedby="marcaHelp">
+                                <option id="kia" value="30000">Kia</option>
+                                <option id="lamborghini" value="140000">lamborghini</option>
+                                <option id="ferrari" value="500000">Ferrari</option>
+                                <option id="audi" value="560000">Audi</option>
+                                <option id="mercedes" value="3530000">Mercedes Benz</option>
+                                <option id="bmw" value="4560000">BMW</option>
+                                <option id="porsche" value="120000">Porsche</option>
+                                <option id="toyota" value="470000">Toyota</option>
+                            </select>            
+                            <small id="espeHelp" class="form-text text-muted">seleccione la marca del vehiculo.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="precio" class="control-label">Precio:</label>
+                            <input type="text" class="form-control" id="enfermedades" name="precio" value="" readonly>
+                            <!--<input type="text" class="form-control" id="enfermedades" name="enfermedades" value="<%= item.historia.enfermedades %>"readonly>-->
+
+                        </div>
+                        <div class="form-group">
+                            <label for="desc" class="control-label">Descripcion:</label>
+                            <input type="text" class="form-control" id="enfer_here" name="desc" value="">
+                            <!--<input type="text" class="form-control" id="enfer_here" name="enfer_here" value="<%= item.historia.enfer_hede %>" readonly>-->
+
+                        </div>
+                        <!--                                            <% }) %>-->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">                                    
+                <a href="/usuario" class="btn btn-default" >Cancelar</a>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </form>
+    </div>
+
+</div><!-- /.modal-content -->

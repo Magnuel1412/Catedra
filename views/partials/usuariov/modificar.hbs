@@ -1,0 +1,59 @@
+<title>{{title}}</title>
+
+<div class="container">
+    <div class="container">  
+        <h2 class="title">{{title}}</h2>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading"></div>
+            <div class="panel-body">
+                <form id="formulario" method="POST" action="/usuario/modificar/">
+                    <input type="hidden" name="external" value="{{cliente.external_id}}"/>
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Cliente</a></li>                                      
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="home">
+                                <div> 
+                                    <h1>
+                                        <small class="label label-danger">Datos del cliente </small>   
+                                    </h1>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="nombres">Nombre</label>
+                                    <input type="text" class="form-control" id="nombres" name="nombres" value="{{cliente.nombres}}" >
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="apellidos">Apellidos </label>
+                                    <input type="text" class="form-control" id="apellidos" name="apellidos" value="{{cliente.apellidos}}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="cedula">Cedula </label>
+                                    <input type="text" class="form-control" id="cedula" name="cedula" value="{{cliente.cedula}}" readonly >
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <label for="edad">Edad </label>
+                                    <input type="text" class="form-control" id="edad" name="edad"  value="{{cliente.edad}}">
+                                           
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Modificar datos</button>
+                                <a href="/usuario" class="btn btn-danger">Cancelar</a>
+                                </form>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+<title>{{title}}</title>
+
+<div class="container">
+    <div class="container">  
+        <h2 class="title">{{title}}</h2>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading"></div>
+            <div class="panel-body">
+                <form id="formulario" method="POST" action="/">
+                    <input type="hidden" name="external" value="<%= vehiculo.external_id %>"/>
+                    <!--<input type="hidden" name="external" value="<%= vehiculo.external_id %>"/>-->
+
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Vehiculo</a></li>                                      
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="home">
+                                <div class="modal-footer">
+                                    <small class="label label-danger">DATOS VEHICULO</small>
+                                </div>
+
+
+
+
+                                <div class="form-group">
+                                    <label for="nro" class="control-label">Nro de matricula</label>
+                                    <input type="text" class="form-control" id="nro" name="nro" value="" >
+                                    <!--<input type="text" class="form-control" id="nro" name="nro" value="<%= item.historia.nro_historia %>" readonly>-->
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="marca" class="control-label">Marca</label>
+                                    <!--<input type="text" class="form-control" id="habitos" name="habitos" value="<%= item.historia.habitos %>"readonly>-->
+                                    <select name="marca" id="genero_musical" class="form-control" aria-describedby="marcaHelp">
+                                        <option id="kia" value="30000">Kia</option>
+                                        <option id="lamborghini" value="140000">lamborghini</option>
+                                        <option id="ferrari" value="500000">Ferrari</option>
+                                        <option id="audi" value="560000">Audi</option>
+                                        <option id="mercedes" value="3530000">Mercedes Benz</option>
+                                        <option id="bmw" value="4560000">BMW</option>
+                                        <option id="porsche" value="120000">Porsche</option>
+                                        <option id="toyota" value="470000">Toyota</option>
+                                    </select>            
+                                    <small id="espeHelp" class="form-text text-muted">seleccione la marca del vehiculo.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="precio" class="control-label">Precio:</label>
+                                    <input type="text" class="form-control" id="enfermedades" name="precio" value="" readonly>
+                                    <!--<input type="text" class="form-control" id="enfermedades" name="enfermedades" value="<%= item.historia.enfermedades %>"readonly>-->
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="desc" class="control-label">Descripcion:</label>
+                                    <input type="text" class="form-control" id="enfer_here" name="desc" value="">
+                                    <!--<input type="text" class="form-control" id="enfer_here" name="enfer_here" value="<%= item.historia.enfer_hede %>" readonly>-->
+
+                                </div>
+                                <!--                                            <% }) %>-->
+                            </div>
+                        </div>
+                    </div>
+                    <a href="/usuario" class="btn btn-default" >Cancelar</a>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,75 @@
+<!--cdn para tablas dinamicas y busqueda-->
+<link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+<script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<!--fin-->
+<script src="/javascripts/utilidades.js"></script>
+<script src="/javascripts/tagsinput.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#buscar").click(function () {
+            var texto = $("#texto").val();
+            $.ajax({
+                url: 'http://localhost:3000/usuario/buscar',
+                data: 'texto=' + texto,
+                success: function (data, textStatus, jqXHR) {
+                    console.log(data);
+                    var html = '';
+                    $.each(data, function (index, item) {
+                        html += '<tr>';
+                        html += '<td>' + item.nombres + '</td>';
+                        html += '<td>' + item.apellidos + '</td>';
+                        html += '<td>' + item.cedula + '</td>';
+                        html += '<td>' + item.edad + '</td>';
+                        html += '<td> <a href="/usuario/modificar/' + item.external_id + '" class="btn btn-primary">Modificar</a></td>'
+                        html += '</tr>';
+                    });
+                    $("#tabla tbody").html(html);
+                }
+            });
+        });
+    });
+
+</script>
+
+<div class="container">
+
+    <a class="btn btn-success card-title" href="/">Volver</a>
+
+    <div class="card-body">
+
+        <div class="card">
+            <div class="card-body">
+
+                <input id="texto"/>
+                <a href="#" id="buscar" class="btn btn-danger">Buscar</a>
+            </div>
+        </div>
+        <a class="btn btn-success card-title" href="/usuario/registro">Nuevo</a>
+        <table id="tabla" class="table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>edad</th>
+                    <th>cedula</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each lista}}
+                <tr>
+                    <td> {{this.nombres}}  </td>
+                    <td> {{this.apellidos}} </td>
+                    <td> {{this.edad}} </td>
+                    <td> {{this.cedula}} </td>
+                    <td> <a href="/usuario/modificar/{{this.external_id}}" class="btn btn-success">Modificar</a></td>
+
+                </tr>
+
+                {{/each}}
+
+            </tbody>
+        </table>
+
+    </div>
+</div>

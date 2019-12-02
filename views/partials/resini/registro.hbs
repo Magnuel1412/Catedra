@@ -1,0 +1,150 @@
+<script src="/js/utilidades.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#fecha_nac").change(function () {
+            var edad = calcularEdad();
+            $("#edad").val(edad);
+        });
+        $.validator.addMethod("soloLetras", function (value, element) {
+            return this.optional(element) || /^[a-z\s]+$/i.test(value);
+        }, "Solo letras");
+        $.validator.addMethod("cedula", function (value, element) {
+            return this.optional(element) || validarCedula(value);
+        }, "Cedula no valida");
+        $("#formulario").validate({
+            errorClass: "my-error-class",
+            validClass: "my-valid-class",
+            rules: {
+                cedula: {
+                    required: true,
+                    minlength: 10,
+                    maxlength: 10,
+                    cedula: true
+                },
+                apellidos: {
+                    required: true,
+                    minlength: 4,
+                    maxlength: 45
+                },
+                nombres: {
+                    required: true,
+                    minlength: 4,
+                    maxlength: 45
+                },
+                fecha_nac: {
+                    required: true
+                },
+                edad: {
+                    required: true,
+                    number: true
+                },
+                correo: {
+                    required: true,
+                    email: true
+                },
+                clave: {
+                    required: true,
+                    minlength: 4,
+                    maxlength: 20
+
+                }
+
+            },
+            messages: {
+                nombres: {
+                    required: "Ingrese sus nombres completos",
+                    minlength: "Minimo 4 caracteres",
+                    maxlength: "Máximo 45 caracteres"
+                },
+                apellidos: {
+                    required: "Ingrese sus apellidos completos",
+                    minlength: "Minimo 4 caracteres",
+                    maxlength: "Máximo 45 caracteres"
+                },
+                fecha_nac: {
+                    required: "Ingrese su fecha de nacimiento"
+                },
+                correo: {
+                    required: "Ingrese su correo"
+                },
+                clave: {
+                    required: "Ingrese su contraseña",
+                    minlength: "Minimo 4 caracteres",
+                    maxlength: "Máximo 20 caracteres"
+                }
+            }
+        });
+    });
+    function calcularEdad() {
+        var fecha = document.getElementById("fecha_nac");
+        var hoy = new Date();
+        var cumpleanos = new Date(fecha.value);
+        var edad = hoy.getFullYear() - cumpleanos.getFullYear();
+        var m = hoy.getMonth() - cumpleanos.getMonth();
+        if (m < 0 || (m === 0 && hoy.getDate() < cumpleanos.getDate())) {
+            edad--;
+        }
+        if (edad >= 0) {
+            return edad;
+        }
+    }
+</script>
+<div class="container" style="padding-top: 5%;"> 
+    
+    <center>
+        <form id="formulario" method="POST" action="/">
+            <div> 
+                <h1>
+                    <small class="label label-danger">DATOS GENERALES </small>   
+                </h1>
+            </div>
+
+            <div class="form-group" >
+                <label for="nombres">Nombre</label>
+                <input type="text" class="form-control" id="nombres"  name="nombres" aria-describedby="nombresHelp" placeholder="Ingrese sus nombres">
+                <small id="nombreHelp"  class="form-text text-muted">Ingrese su nombre.</small>
+            </div >
+
+            <div class="form-group">
+                <label for="apellidos">Apellidos </label>
+                <input type="text" class="form-control" id="apellidos" name="apellidos" aria-describedby="apellidosHelp" placeholder="Ingrese sus apellidos">
+                <small id="apellidosHelp" class="form-text text-muted">Ingrese sus apellidos.</small>
+            </div>
+
+            <div class="form-group">
+                <label for="cedula">Cedula </label>
+                <input type="text" class="form-control" id="cedula" name="cedula" aria-describedby="cedulaHelp" placeholder="Ingrese la cedula">
+                <small id="cedulaHelp" class="form-text text-muted">Ingrese su cedula.</small>
+            </div>
+
+            <div class="form-group">
+                <label for="fecha_nac">Fecha de nacimiento </label>
+                <input type="date" class="form-control" id="fecha_nac" name="fecha_nac" aria-describedby="fecha_nacHelp" placeholder="Ingrese la cedula">
+                <small id="fecha_nacHelp" class="form-text text-muted">Ingrese su fecha de nacimiento.</small>
+            </div>
+
+            <div class="form-group">
+                <label for="edad">Edad</label>
+                <input type="text" name="edad" id="edad" class="form-control"
+                       placeholder="Ingrese su edad" readonly>
+            </div>
+
+            <div>            
+                <small class="label label-danger">DATOS DE LA CUENTA </small>            
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Correo electronico </label>
+                <input type="email" class="form-control" id="correo" name="correo" aria-describedby="emailHelp" placeholder="Ingrese el correo electronico personal">
+                <small id="emailHelp" class="form-text text-muted">Ingrese el correo electronico personal.</small>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Clave </label>
+                <input type="password" class="form-control" name="clave" id="exampleInputPassword1" placeholder="Clave">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Registrate</button>
+            <a href="/" class="btn btn-danger">Volver</a>
+        </form>
+    </center>
+</div>
+

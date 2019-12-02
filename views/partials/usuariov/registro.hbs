@@ -1,0 +1,75 @@
+<script src="/javascripts/utilidades.js"></script>
+<script>
+    $(function () {
+        $.validator.addMethod("soloLetras", function (value, element) {
+            return this.optional(element) || /^[a-z\s]+$/i.test(value);
+        }, "Solo letras");
+
+        $.validator.addMethod("registro", function (value, element) {
+            return this.optional(element) || /^[N]-[0-9]{4}-[R]-[0-9]{3}$/.test(value);
+        }, "Ingrese un registro valido");
+
+        $.validator.addMethod("cedula", function (value, element) {
+            return this.optional(element) || validarCedula(value);
+        }, "Cedula no valida");
+        $("#formulario").validate({
+            rules: {
+                cedula: {
+                    required: true,
+                    minlength: 10,
+                    maxlength: 10,
+                    cedula: true
+                },
+                apellidos: {
+                    required: true
+                },
+                nombres: {
+                    required: true
+                }
+            }
+        });
+    });
+</script>
+<div class="container" style="padding-top: 5%;">  
+ 
+
+    <center>
+        <form id="formulario" method="POST" action="/usuario/registro">
+            <div> 
+                <h1>
+                    <small class="label label-danger">Datos del cliente </small>   
+                </h1>
+            </div>
+
+            <div class="form-group">
+                <label for="nombres">Nombre</label>
+                <input type="text" class="form-control" id="nombres" name="nombres" aria-describedby="nombresHelp" placeholder="Ingrese sus nombres">
+                <small id="nombreHelp" class="form-text text-muted">Ingrese el nombre del cliente.</small>
+            </div>
+
+            <div class="form-group">
+                <label for="apellidos">Apellidos </label>
+                <input type="text" class="form-control" id="apellidos" name="apellidos" aria-describedby="apellidosHelp" placeholder="Ingrese sus apellidos">
+                <small id="apellidosHelp" class="form-text text-muted">Ingrese el apellido del cliente.</small>
+            </div>
+
+            <div class="form-group">
+                <label for="cedula">Cedula </label>
+                <input type="text" class="form-control" id="cedula" name="cedula" aria-describedby="cedulaHelp" placeholder="Ingrese la cedula">
+                <small id="cedulaHelp" class="form-text text-muted">Ingrese la cedula del cliente.</small>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="edad">Edad </label>
+                <input type="text" class="form-control" id="edad" name="edad" aria-describedby="edadHelp" placeholder="Ingrese su edad">
+                <small id="edadHelp" class="form-text text-muted">Ingrese la edad del cliente.</small>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Registra al cliente</button>
+            <a href="/usuario" class="btn btn-danger">Cancelar</a>
+        </form>
+    </center>
+</div>
+
