@@ -70,7 +70,7 @@ figure {
 #colorlib-page {
   width: 100%;
   overflow: hidden;
-  position: relative; }
+  position: absolute; }
 
 #colorlib-aside {
   padding-top: 3em;
